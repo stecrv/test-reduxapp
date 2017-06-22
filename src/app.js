@@ -8,6 +8,17 @@ const reducer = function (state={books:[]}, action) {
             let books  =  state.books.concat(action.payload)
             return {books};
             break;
+        case "DELETE_BOOK":
+            const currentBookToDelete = [...state.books];
+
+            const indexToDelete =  currentBookToDelete.findIndex(
+                    function(book){
+                        return book.id === action.payload.id;
+                    }
+                );
+
+            return {books: [...currentBookToDelete.slice(0, indexToDelete),...currentBookToDelete.slice(indexToDelete + 1)]}
+            break;
     }
     return state
 
@@ -39,11 +50,9 @@ store.dispatch({
 });
 
 store.dispatch({
-    type: "POST_BOOK",
-    payload: [{
-        id: 3,
-        title: 'this is the book title 3',
-        description: 'this is the book description 3 ',
-        price: 33.33
-    }]
+    type: "DELETE_BOOK",
+    payload: {
+        id: 1,
+
+    }
 });

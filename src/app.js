@@ -23,7 +23,7 @@ render(
     </Provider>,
     document.getElementById('app')
 );
-
+/**
 store.dispatch(postBooks(
     [{
         id: 1,
@@ -38,7 +38,7 @@ store.dispatch(postBooks(
             price: 50
         }]
 ))
-/**
+
 
 store.subscribe(function () {
     console.log('current state is: ',

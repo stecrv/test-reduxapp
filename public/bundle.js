@@ -743,12 +743,13 @@ var _redux = __webpack_require__(7);
 
 // 3 reducers
 var reducer = function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { books: [] };
     var action = arguments[1];
 
     switch (action.type) {
         case "POST_BOOK":
-            return state = action.payload;
+            var books = state.books.concat(action.payload);
+            return { books: books };
             break;
     }
     return state;
@@ -759,17 +760,32 @@ var store = (0, _redux.createStore)(reducer);
 store.subscribe(function () {
     console.log('current state is: ', store.getState());
     console.log('current price: ', store.getState().price);
-}
+});
 
 // 2 create and dispatch actions
-);store.dispatch({
+store.dispatch({
     type: "POST_BOOK",
-    payload: {
+    payload: [{
         id: 1,
         title: 'this is the book title',
         description: 'this is the book description',
         price: 33.33
-    }
+    }, {
+        id: 2,
+        title: 'this is the 2 book title',
+        description: 'this is 2 the book description',
+        price: 22.33
+    }]
+});
+
+store.dispatch({
+    type: "POST_BOOK",
+    payload: [{
+        id: 3,
+        title: 'this is the book title 3',
+        description: 'this is the book description 3 ',
+        price: 33.33
+    }]
 });
 
 /***/ }),

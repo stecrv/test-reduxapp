@@ -6,7 +6,7 @@
 
 - `npm init -y`
 - `npm install webpack -g`
--  `npm install --save babel-core@6.21.0 babel-loader@6.2.10 babel-preset- es2015@6.18.0 babel-preset-stage-1@6.16.0`
+- `npm install --save babel-core@6.21.0 babel-loader@6.2.10 babel-preset- es2015@6.18.0 babel-preset-stage-1@6.16.0`
 - `npm install --save-dev webpack`
 - `npm i --save react`
 - `npm i --save redux`

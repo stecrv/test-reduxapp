@@ -1,7 +1,7 @@
 {
   "name": "reduxapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "## setup",
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www & node apiServer.js"
@@ -38,5 +38,16 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "serve-favicon": "~2.3.2"
-  }
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stecrv/test-reduxapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stecrv/test-reduxapp/issues"
+  },
+  "homepage": "https://github.com/stecrv/test-reduxapp#readme"
 }

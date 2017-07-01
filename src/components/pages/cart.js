@@ -20,6 +20,14 @@ class Cart extends React.Component {
 
         this.props.deleteCartItem(cartAfterDelete)
     }
+    onIncrement(_id){
+        this.props.updateCart(_id, 1, this.props.cart);
+    }
+    onDecrement(_id, quantity){
+        if(quantity > 1){
+            this.props.updateCart(_id, -1, this.props.cart);
+        }
+    }
     render() {
         if (this.props.cart[0]) {
             return this.renderCart();
@@ -33,7 +41,7 @@ class Cart extends React.Component {
     }
 
     renderCart() {
-        const cartItemsList = this.props.cart.map(function (cartArr) {
+        const cartItemsList = this.props.cart.map(function(cartArr) {
             return (
                 <Panel key={cartArr._id}>
                     <Row>
@@ -44,18 +52,19 @@ class Cart extends React.Component {
                             <h6>USD. {cartArr.price}</h6><span>    </span>
                         </Col>
                         <Col xs={6} sm={4}>
-                            <h6>quantity <Label> </Label></h6><span>    </span>
+                            <h6>quantity <Label>{cartArr.quantity}</Label></h6><span>    </span>
                         </Col>
                         <ButtonGroup style={{minWidth:'300px'}} >
-                            <Button bsStyle="default" bsSize="small">-</Button>
-                            <Button bsStyle="default" bsSize="small">+</Button>
+                            <Button bsStyle="default" bsSize="small" onClick={ this.onDecrement.bind(this, cartArr._id, cartArr.quantity) }>-</Button>
+                            <Button bsStyle="default" bsSize="small" onClick={ this.onIncrement.bind(this, cartArr._id)}>+</Button>
                             <span>    </span>
                             <Button bsStyle="danger" bsSize="small" onClick={this.onDelete.bind(this, cartArr._id)}>Remove</Button>
                         </ButtonGroup>
                     </Row>
                 </Panel>
             )
-        }, this)
+        }, this);
+
         return (
             <Panel>{cartItemsList}</Panel>
         )
@@ -70,7 +79,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({
-        deleteCartItem: deleteCartItem // other actions
+        deleteCartItem: deleteCartItem,
+        updateCart: updateCart
     },dispatch)
 }
 

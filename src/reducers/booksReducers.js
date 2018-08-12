@@ -16,10 +16,12 @@ export  function  booksReducers(state = {
 }, action) {
     switch (action.type) {
         case "GET_BOOKS":
-            return {...state, books:[...state.books]}
+            return {...state, books:[...state.books]};
             break;
         case "POST_BOOK":
-            let books  =  state.books.concat(action.payload)
+            let latestID = state.books[state.books.length - 1]._id;
+            action.payload[0]._id = latestID++;
+            let books  =  state.books.concat(action.payload);
             return {books};
             break;
         case "DELETE_BOOK":

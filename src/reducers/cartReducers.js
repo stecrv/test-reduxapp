@@ -13,12 +13,12 @@ export function cartReducers(state={cart: []}, action) {
                 function(book){
                     return book._id === action._id;
                 }
-            )
+            );
 
             const newBookToUpdate = {
                 ...currentBookToUpdate[indexToUpdate],
                 quantity: currentBookToUpdate[indexToUpdate].quantity + action.unit
-            }
+            };
 
             let cartUpdate = [...currentBookToUpdate.slice(0, indexToUpdate), newBookToUpdate, ...currentBookToUpdate.slice(indexToUpdate + 1)]
             return {cart: cartUpdate}

@@ -11,7 +11,7 @@ export function cartReducers(state={cart: []}, action) {
             // Determine at which index in books array is the book to be deleted
             const indexToUpdate = currentBookToUpdate.findIndex(
                 function(book){
-                    return book._id === action._id;
+                    return book._id === action.payload;
                 }
             );
 

@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-
+process.env.NODE_ENV = "dev"
 // THE STATIC FILES
 app.use(express.static('public'));
 
